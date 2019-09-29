@@ -34,7 +34,16 @@ void GoldenSearch::countMin() {
 	double fx1 = getValueFor(x1);
 	double fx2 = getValueFor(x2);
 	int k = 1;
-	while () {
+	if (fx1 > fx2) {
+		setA(x1);
+		x1 = x2;
+		x2 = 1 / 0;
+	} else {
+		setB(x2);
+		x2 = x1;
+		x1 = 1 / 0;
+	}
+	while(getA()+getB()>=getEpsilon()) {
 		k++;
 	}
 }

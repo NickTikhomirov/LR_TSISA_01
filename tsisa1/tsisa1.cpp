@@ -23,7 +23,7 @@ int main()
 	for (int i = 0; i < waysToCount.size(); i++) {
 		waysToCount[i]->introduceYourself();
 		waysToCount[i]->countMin;
-		waysToCount[i]->~BasicSolver();
+		delete waysToCount[i];
 		waysToCount[i] = nullptr;
 	}
 }
