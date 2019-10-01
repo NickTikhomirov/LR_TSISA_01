@@ -20,30 +20,56 @@ void GoldenSearch::introduceYourself() {
 }
 
 double GoldenSearch::countLeftPoint() {
-	return (getA() + getB()*(1-1/goldenConst));
+	return (getB()+(getA()-getB())/goldenConst);
 }
 
 double GoldenSearch::countRightPoint() {
-	return (getA() + getB()/goldenConst);
+	return (getA() + (getB()-getA())/goldenConst);
 }
 
+void GoldenSearch::out(int k, double x1, double f1, double x2, double f2){
+	if (isinf(x1) || isinf(x2)) {
+		cout <<"Steps taken: "<< k << ". Limits: (" << getA() << "; " << getB() << "), length: " << getB() - getA() << endl;
+		return;
+	}
+	cout << k << ". Limits: (" << getA() << "; " << getB() << "), length: " << getB() - getA() <<
+		",  points: (" << x1 << "," << f1 << "), (" << x2 << "," << f2 << ")." << endl;
+}
+
+
 void GoldenSearch::countMin() {
-	double goldenConst = 0.5 * (1 + sqrt(5));
+	double infinity = 0.0;
+	infinity = 1.0 / infinity;
 	double x1 = countLeftPoint();
 	double x2 = countRightPoint();
 	double fx1 = getValueFor(x1);
 	double fx2 = getValueFor(x2);
 	int k = 1;
-	if (fx1 > fx2) {
-		setA(x1);
-		x1 = x2;
-		x2 = 1 / 0;
-	} else {
-		setB(x2);
-		x2 = x1;
-		x1 = 1 / 0;
-	}
-	while(getA()+getB()>=getEpsilon()) {
+	//out(k, x1, fx1, x2, fx2);
+
+	while(getB()-getA()>=getEpsilon()) {
+		out(k, x1, fx1, x2, fx2);
 		k++;
+		if (fx1 > fx2) {
+			setA(x1);
+			x1 = x2;
+			fx1 = fx2;
+			x2 = infinity;
+		}
+		else {
+			setB(x2);
+			x2 = x1;
+			fx2 = fx1;
+			x1 = infinity;
+		}
+
+		if (x1 == infinity) {
+			x1 = countLeftPoint();
+			fx1 = getValueFor(x1);
+		} else {
+			x2 = countRightPoint();
+			fx2 = getValueFor(x2);
+		}
 	}
+	out(k, x1, fx1, x2, fx2);
 }

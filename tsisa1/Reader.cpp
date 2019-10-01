@@ -12,6 +12,7 @@ string Reader::readString() {
 	cout << "> ";
 	do getline(cin, s);
 	while(s.empty());
+	return s;
 }
 
 double Reader::readDouble(){

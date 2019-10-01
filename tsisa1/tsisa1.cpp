@@ -22,7 +22,7 @@ int main()
 	waysToCount[1] = new PassiveSearch(7, 10, epsilon);
 	for (int i = 0; i < waysToCount.size(); i++) {
 		waysToCount[i]->introduceYourself();
-		waysToCount[i]->countMin;
+		waysToCount[i]->countMin();
 		delete waysToCount[i];
 		waysToCount[i] = nullptr;
 	}
