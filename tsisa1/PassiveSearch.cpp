@@ -28,7 +28,7 @@ void PassiveSearch::countMin() {
 	double point_f;
 	double min_x = infinity;
 	double min_f = infinity;
-	int length = getB() - getA();
+	double length = getB() - getA();
 	double trueLength = length;
 	int iterations = 0;
 	while (length >= getEpsilon()) {

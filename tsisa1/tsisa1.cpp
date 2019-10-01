@@ -18,8 +18,8 @@ int main()
 	cout << "Please, type epsilon's value"<<endl;
 	double epsilon = Reader::readDouble();
 	waysToCount.resize(2);
-	waysToCount[0] = new GoldenSearch(7, 10, epsilon);
-	waysToCount[1] = new PassiveSearch(7, 10, epsilon);
+	waysToCount[0] = new PassiveSearch(7, 10, epsilon);
+	waysToCount[1] = new GoldenSearch(7, 10, epsilon);
 	for (int i = 0; i < waysToCount.size(); i++) {
 		waysToCount[i]->introduceYourself();
 		waysToCount[i]->countMin();
