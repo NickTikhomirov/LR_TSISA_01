@@ -1,5 +1,6 @@
 #include "PassiveSearch.h"
 #include <cmath>
+#include <iomanip>
 
 using std::cout;
 using std::endl;
@@ -31,7 +32,8 @@ void PassiveSearch::countMin() {
 	double length = getB() - getA();
 	double trueLength = length;
 	int iterations = 0;
-	while (length >= getEpsilon()) {
+	cout << " k |\t f(x)  |\t x " << endl;
+	while (length > getEpsilon()) {
 		min_f = infinity;
 		point_x = 0;
 		iterations++;
@@ -44,10 +46,12 @@ void PassiveSearch::countMin() {
 				min_x = point_x;
 			}
 		}
-		cout << "Points: " << iterations <<
-			"\n  The value f=" << min_f << " is reached with x=" << min_x << "\n  Epsilon: " << length<<endl;
+		//cout << "Points: " << iterations <<
+		//	"\n  The value f=" << min_f << " is reached with x=" << min_x << "+-" << length<<endl;
+		cout << std::fixed << std::setprecision(4) <<((iterations<10)?"00":"0")
+			<< iterations << "|\t " << min_f << "|\t " << min_x << "+-" << length << endl;
 	}
-	cout << "The final result:"<<endl;
+	cout << "\n\nThe final result:"<<endl;
 	cout << "Points: " << iterations <<
-		"\n  The value f=" << min_f << " is reached with x=" << min_x << "\n  Epsilon: " << length << endl;
+		"\n  The value f=" << min_f << " is reached with x=" << min_x << "+-" << length << endl<<endl;
 }
