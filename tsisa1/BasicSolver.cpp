@@ -32,6 +32,10 @@ double BasicSolver::getEpsilon(){
 	return epsilon;
 }
 
+double BasicSolver::getPrecision() {
+	return epsilon / 2;
+}
+
 void BasicSolver::setA(double a1) {
 	if (a1 > a) a = a1;
 }

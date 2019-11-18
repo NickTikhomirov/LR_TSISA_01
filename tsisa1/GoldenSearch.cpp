@@ -35,7 +35,7 @@ void GoldenSearch::out(int k, double x1, double f1, double x2, double f2){
 	//cout << k ;
 	//cout << ". Limits: (" << getA() << "; " << getB() << "), length: " << getB() - getA() <<
 	//	",  points: (" << x1 << "," << f1 << "), (" << x2 << "," << f2 << ")." << endl;
-	cout << k << " |\t" << getA() << " |\t" << getB() << " |\t" << x1 << " |\t" << f1 << " |\t" << x2 <<" |\t" << f2 << " |\t" << 0.5*(getB()-getA()) <<endl;
+	cout << k << " |\t" << getA() << " |\t" << getB() << " |\t" << x1 << " |\t" << f1 << " |\t" << x2 <<" |\t" << f2 << " |\t" << (getB()-getA()) <<endl;
 }
 
 
@@ -48,9 +48,9 @@ void GoldenSearch::countMin() {
 	double fx2 = getValueFor(x2);
 	int k = 1;
 	//out(k, x1, fx1, x2, fx2);
-	cout << "k |\t    a  |\t    b  |\t   x1  |\t   fx1  |\t   x2  |\t   fx2  |\t0.5*(b-a) \n";
+	cout << "k |\t    a  |\t    b  |\t   x1  |\t   fx1  |\t   x2  |\t   fx2  |\t  b-a \n";
 	cout << "______________________________________________________________________________________________________________________\n";
-	while(getB()-getA()>2*getEpsilon()) {
+	while(getB()-getA()>getEpsilon()) {
 		out(k, x1, fx1, x2, fx2);
 		k++;
 		if (fx1 > fx2) {

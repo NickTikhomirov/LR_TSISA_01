@@ -2,10 +2,9 @@
 
 #include <iostream>
 #include <vector>
+#include <iomanip>
 #include "PassiveSearch.h"
 #include "GoldenSearch.h"
-#include "Reader.h"
-#include <iomanip>
 
 using std::vector;
 using std::cout;
@@ -16,9 +15,8 @@ using std::endl;
 int main()
 {
 	vector<BasicSolver*> waysToCount;
-	cout << "Please, type epsilon's value"<<endl;
-	double epsilon = Reader::readDouble();
-	epsilon = epsilon / 2;
+	cout << "Epsilon equals 0.1 \n\n"<<endl;
+	double epsilon = 0.1;
 	waysToCount.resize(2);
 	waysToCount[0] = new PassiveSearch(7, 10, epsilon);
 	waysToCount[1] = new GoldenSearch(7, 10, epsilon);

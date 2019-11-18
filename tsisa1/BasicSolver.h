@@ -14,6 +14,7 @@ private:
 public:
 	double getA();
 	double getB();
+	double getPrecision();
 	void setA(double a1);
 	void setB(double b1);
 	double getEpsilon();
